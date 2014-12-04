@@ -5,6 +5,7 @@ DESTINO="$1"
 DE="digite seu e-mail"
 ASSUNTO="$2"
 MENSAGEM="$3"
+LOG=/var/log/zabbix-ses.log
 
 # Validate script syntax
 [ $# -eq 0 ] && { echo "Usage: $0 e-mail@address.com subject message"; exit 1; }
@@ -29,4 +30,5 @@ assunto="Message.Subject.Data=$ASSUNTO"
 corpo_email="Message.Body.Text.Data=$MENSAGEM"
 
 # SES POST
-curl -v -X POST -H "Date: $date" -H "$cabecalho_autenticacao" --data-urlencode "$corpo_email" --data-urlencode "$destinatario" --data-urlencode "$remetente" --data-urlencode "$acao_envio" --data-urlencode "$assunto"  "$endpoint"
+curl -v -X POST -H "Date: $date" -H "$cabecalho_autenticacao" --data-urlencode "$corpo_email" --data-urlencode "$destinatario" --data-urlencode "$remetente" --data-urlencode "$acao_envio" --data-urlencode "$assunto"  "$endpoint" > $LOG 2>&1
+ 
