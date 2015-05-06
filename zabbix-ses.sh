@@ -1,4 +1,10 @@
+########################################################### 
+# AUTHOR  : Rodrigo Fernandes - https://br.linkedin.com/in/rsgfernandes
+# DATE    : 06-05-2015
+########################################################### 
+
 #!/bin/bash
+
 
 # Script parameters
 DESTINO="$1"
